@@ -37,6 +37,9 @@
 
   <!-- Response -->
   <div class="tab-pane fade" id="response-{{$ctrl.index}}" role="tabpanel" aria-labelledby="response-{{$ctrl.index}}">
+
+    <!-- Parameters -->
+    <ad-parameters params="$ctrl.doc.response_params" ng-if="$ctrl.doc.response_params && $ctrl.doc.response_params.length > 0"></ad-parameters>
     <!-- Examples -->
     <div
       ng-if="$ctrl.doc.examples && $ctrl.doc.examples.length > 0"

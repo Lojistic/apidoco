@@ -17,6 +17,7 @@
 //= require apidoco/bootstrap/bootstrap
 //= require apidoco/clipboard.min
 //= require apidoco/directives/ngclipboard
+//= require apidoco/directives/angular-sanitize
 //= require apidoco/apidoco_app
 //
 //  Icons

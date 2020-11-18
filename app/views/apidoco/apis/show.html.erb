@@ -28,35 +28,42 @@
 
               <!-- Title -->
               <div class="d-flex align-items-center">
-                <button class="btn btn-outline-success btn-sm" type="button"><b>{{x.http_method}}</b></button>
+                <button class="btn btn-outline-success btn-sm" type="button"><b>{{x.http_method || 'Documentation'}}</b></button>
                 <div class="ml-2 font-weight-bolder">{{x.name}}</div>
                 <button class="btn btn-light btn-sm ml-2" type="button" ngclipboard data-clipboard-text="{{versionAddress()}}#{{x.id}}">
                   <link-icon />
                 </button>
               </div>
 
-              <!-- End point -->
-              <div class="section-block">
-                <div class="row">
-                  <div class="col-sm-8 d-flex">
-                    <input type="text" readonly class="form-control bg-light text-muted" value="{{x.end_point}}">
-                    <button class="btn btn-light btn-sm ml-2" type="button" ngclipboard data-clipboard-text="{{x.end_point}}">
-                      <copy-icon />
-                    </button>
-                  </div>
-                </div>
+              <!-- Page Documents -->
+              <div ng-if="x.markdown" class='container-flex'>
+                <div class='description' ng-bind-html="x.description"></div>
               </div>
 
-              <!-- Description -->
-              <p ng-if="x.description">{{x.description}}</p>
+              <div ng-if="!x.markdown">
+                <!-- End point -->
+                <div class="section-block">
+                  <div class="row">
+                    <div class="col-sm-8 d-flex">
+                      <input type="text" readonly class="form-control bg-light text-muted" value="{{x.end_point}}">
+                      <button class="btn btn-light btn-sm ml-2" type="button" ngclipboard data-clipboard-text="{{x.end_point}}">
+                        <copy-icon />
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
-              <ad-tabbed doc="x" index="$index"></ad-tabbed>
+                <!-- Description -->
+                <p ng-if="x.description">{{x.description}}</p>
 
-              <div class="section-block" ng-if="x.notes">
-                <h3 class="block-title">Notes</h5>
-                <p ng-repeat="note in x.notes">
-                  {{ note }}
-                </p>
+                <ad-tabbed doc="x" index="$index"></ad-tabbed>
+
+                <div class="section-block" ng-if="x.notes">
+                  <h3 class="block-title">Notes</h5>
+                  <p ng-repeat="note in x.notes">
+                    {{ note }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
