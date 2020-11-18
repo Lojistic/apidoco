@@ -1,1 +1,1 @@
-angular.module('apiDocoApp', ['ngclipboard']);
+angular.module('apiDocoApp', ['ngclipboard', 'ngSanitize']);
